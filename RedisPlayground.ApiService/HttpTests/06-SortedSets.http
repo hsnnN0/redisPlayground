@@ -1,0 +1,78 @@
+### Redis Sorted Sets & Leaderboard Operations
+### Add players to game leaderboard
+POST {{BaseUrl}}/sorted-sets/game:leaderboard/add
+Content-Type: application/json
+
+{
+  "member": "player1",
+  "score": 1500
+}
+
+### Add more players
+POST {{BaseUrl}}/sorted-sets/game:leaderboard/add
+Content-Type: application/json
+
+{
+  "member": "player2",
+  "score": 2100
+}
+
+### Add another player
+POST {{BaseUrl}}/sorted-sets/game:leaderboard/add
+Content-Type: application/json
+
+{
+  "member": "player3",
+  "score": 1800
+}
+
+### Add more players for a complete leaderboard
+POST {{BaseUrl}}/sorted-sets/game:leaderboard/add
+Content-Type: application/json
+
+{
+  "member": "player4",
+  "score": 2500
+}
+
+### Add final player
+POST {{BaseUrl}}/sorted-sets/game:leaderboard/add
+Content-Type: application/json
+
+{
+  "member": "player5",
+  "score": 1200
+}
+
+### Get top 10 leaderboard (descending - highest scores first)
+GET {{BaseUrl}}/sorted-sets/game:leaderboard/leaderboard?count=10&descending=true
+
+### Get top 3 leaderboard
+GET {{BaseUrl}}/sorted-sets/game:leaderboard/leaderboard?count=3&descending=true
+
+### Get bottom performers (ascending - lowest scores first)
+GET {{BaseUrl}}/sorted-sets/game:leaderboard/leaderboard?count=3&descending=false
+
+### Get specific player's rank
+GET {{BaseUrl}}/sorted-sets/game:leaderboard/rank/player2
+
+### Get another player's rank
+GET {{BaseUrl}}/sorted-sets/game:leaderboard/rank/player5
+
+### Check rank for non-existent player (should return 404)
+GET {{BaseUrl}}/sorted-sets/game:leaderboard/rank/nonexistent
+
+### Update player score (higher score)
+POST {{BaseUrl}}/sorted-sets/game:leaderboard/add
+Content-Type: application/json
+
+{
+  "member": "player1",
+  "score": 2800
+}
+
+### Get updated leaderboard
+GET {{BaseUrl}}/sorted-sets/game:leaderboard/leaderboard?count=5&descending=true
+
+### Check updated player rank
+GET {{BaseUrl}}/sorted-sets/game:leaderboard/rank/player1

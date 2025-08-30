@@ -1,0 +1,65 @@
+### Redis Set Operations
+### Add members to a set
+POST {{BaseUrl}}/sets/myset/add
+Content-Type: application/json
+
+{
+  "values": ["apple", "banana", "cherry"]
+}
+
+### Add more members to the set (duplicates will be ignored)
+POST {{BaseUrl}}/sets/myset/add
+Content-Type: application/json
+
+{
+  "values": ["banana", "date", "elderberry"]
+}
+
+### Get all members of the set
+GET {{BaseUrl}}/sets/myset
+
+### Check if a value is a member of the set (should return true)
+POST {{BaseUrl}}/sets/myset/ismember
+Content-Type: application/json
+
+{
+  "value": "apple"
+}
+
+### Check if a value is NOT a member of the set (should return false)
+POST {{BaseUrl}}/sets/myset/ismember
+Content-Type: application/json
+
+{
+  "value": "grape"
+}
+
+### Create a user permissions set example
+POST {{BaseUrl}}/sets/user:123:permissions/add
+Content-Type: application/json
+
+{
+  "values": ["read", "write", "delete", "admin"]
+}
+
+### Check user permissions
+POST {{BaseUrl}}/sets/user:123:permissions/ismember
+Content-Type: application/json
+
+{
+  "value": "admin"
+}
+
+### Get all user permissions
+GET {{BaseUrl}}/sets/user:123:permissions
+
+### Create tags set for an article
+POST {{BaseUrl}}/sets/article:456:tags/add
+Content-Type: application/json
+
+{
+  "values": ["redis", "database", "caching", "nosql"]
+}
+
+### Get all article tags
+GET {{BaseUrl}}/sets/article:456:tags

@@ -1,0 +1,104 @@
+### Redis Stream Operations
+### Add event to user activity stream
+POST {{BaseUrl}}/streams/user:123:activity/add
+Content-Type: application/json
+
+{
+  "fields": {
+    "action": "login",
+    "timestamp": "2024-01-15T10:30:00Z",
+    "ip": "192.168.1.100",
+    "device": "mobile"
+  }
+}
+
+### Add another event to the stream
+POST {{BaseUrl}}/streams/user:123:activity/add
+Content-Type: application/json
+
+{
+  "fields": {
+    "action": "view_product",
+    "timestamp": "2024-01-15T10:35:00Z",
+    "product_id": "123",
+    "category": "electronics"
+  }
+}
+
+### Add purchase event
+POST {{BaseUrl}}/streams/user:123:activity/add
+Content-Type: application/json
+
+{
+  "fields": {
+    "action": "purchase",
+    "timestamp": "2024-01-15T10:45:00Z",
+    "product_id": "123",
+    "amount": "99.99",
+    "currency": "USD"
+  }
+}
+
+### Read all events from the stream
+GET {{BaseUrl}}/streams/user:123:activity?startId=0&count=10
+
+### Read recent events (limit to 5)
+GET {{BaseUrl}}/streams/user:123:activity?startId=0&count=5
+
+### Add sensor data stream
+POST {{BaseUrl}}/streams/sensor:temperature/add
+Content-Type: application/json
+
+{
+  "fields": {
+    "sensor_id": "temp_001",
+    "temperature": "23.5",
+    "humidity": "65.2",
+    "location": "server_room"
+  }
+}
+
+### Add another sensor reading
+POST {{BaseUrl}}/streams/sensor:temperature/add
+Content-Type: application/json
+
+{
+  "fields": {
+    "sensor_id": "temp_001",
+    "temperature": "24.1",
+    "humidity": "64.8",
+    "location": "server_room"
+  }
+}
+
+### Read sensor data
+GET {{BaseUrl}}/streams/sensor:temperature?startId=0&count=10
+
+### Add log entry stream
+POST {{BaseUrl}}/streams/app:logs/add
+Content-Type: application/json
+
+{
+  "fields": {
+    "level": "INFO",
+    "message": "User authenticated successfully",
+    "user_id": "123",
+    "service": "auth-service"
+  }
+}
+
+### Add error log
+POST {{BaseUrl}}/streams/app:logs/add
+Content-Type: application/json
+
+{
+  "fields": {
+    "level": "ERROR",
+    "message": "Database connection failed",
+    "error_code": "DB_001",
+    "service": "user-service"
+  }
+}
+
+### Read application logs
+GET {{BaseUrl}}/streams/app:logs?startId=0&count=20

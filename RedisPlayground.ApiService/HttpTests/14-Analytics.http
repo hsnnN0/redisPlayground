@@ -1,0 +1,60 @@
+### Analytics & Monitoring Operations
+### Get Redis server information
+GET {{BaseUrl}}/analytics/info
+
+### Get memory usage statistics
+GET {{BaseUrl}}/analytics/memory
+
+### Get server performance statistics
+GET {{BaseUrl}}/analytics/stats
+
+### Get connected client information
+GET {{BaseUrl}}/analytics/clients
+
+### Get slow query log
+POST {{BaseUrl}}/analytics/slowlog
+Content-Type: application/json
+
+{
+  "count": 10
+}
+
+### Get keyspace information
+GET {{BaseUrl}}/analytics/keyspace
+
+### Analyze key patterns
+POST {{BaseUrl}}/analytics/keys/pattern
+Content-Type: application/json
+
+{
+  "pattern": "user:*",
+  "maxKeys": 50
+}
+
+### Analyze cache key patterns
+POST {{BaseUrl}}/analytics/keys/pattern
+Content-Type: application/json
+
+{
+  "pattern": "cache:*",
+  "maxKeys": 100
+}
+
+### Analyze session key patterns
+POST {{BaseUrl}}/analytics/keys/pattern
+Content-Type: application/json
+
+{
+  "pattern": "session:*",
+  "maxKeys": 25
+}
+
+### Get comprehensive analytics
+### This demonstrates getting all analytics data
+GET {{BaseUrl}}/analytics/info
+###
+GET {{BaseUrl}}/analytics/memory
+###
+GET {{BaseUrl}}/analytics/stats
+###
+GET {{BaseUrl}}/analytics/clients

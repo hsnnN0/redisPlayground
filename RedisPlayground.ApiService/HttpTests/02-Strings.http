@@ -1,0 +1,85 @@
+### Redis String Operations
+### Set string value with expiration
+POST {{BaseUrl}}/strings/test_string
+Content-Type: application/json
+
+{
+  "value": "Hello Redis String!",
+  "expirationSeconds": 300
+}
+
+### Get string value
+GET {{BaseUrl}}/strings/test_string
+
+### Set string without expiration
+POST {{BaseUrl}}/strings/user:name:123
+Content-Type: application/json
+
+{
+  "value": "John Doe"
+}
+
+### Get user name
+GET {{BaseUrl}}/strings/user:name:123
+
+### Set numeric string for increment operations
+POST {{BaseUrl}}/strings/counter
+Content-Type: application/json
+
+{
+  "value": "10"
+}
+
+### Increment counter by 1 (default)
+POST {{BaseUrl}}/strings/counter/increment
+Content-Type: application/json
+
+{
+  "amount": 1
+}
+
+### Increment counter by 5
+POST {{BaseUrl}}/strings/counter/increment
+Content-Type: application/json
+
+{
+  "amount": 5
+}
+
+### Get counter value
+GET {{BaseUrl}}/strings/counter
+
+### Decrement counter (negative increment)
+POST {{BaseUrl}}/strings/counter/increment
+Content-Type: application/json
+
+{
+  "amount": -3
+}
+
+### Get final counter value
+GET {{BaseUrl}}/strings/counter
+
+### Set application version
+POST {{BaseUrl}}/strings/app:version
+Content-Type: application/json
+
+{
+  "value": "1.2.3",
+  "expirationSeconds": 86400
+}
+
+### Get application version
+GET {{BaseUrl}}/strings/app:version
+
+### Set user session data
+POST {{BaseUrl}}/strings/session:abc123
+Content-Type: application/json
+
+{
+  "value": "user_id:456,expires:2024-12-31",
+  "expirationSeconds": 3600
+}
+
+### Get session data
+GET {{BaseUrl}}/strings/session:abc123

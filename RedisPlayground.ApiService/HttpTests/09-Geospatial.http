@@ -1,0 +1,108 @@
+### Redis Geospatial Operations
+### Add restaurant locations
+POST {{BaseUrl}}/geo/restaurants/add
+Content-Type: application/json
+
+{
+  "member": "Pizza Palace",
+  "longitude": -74.006,
+  "latitude": 40.7128
+}
+
+### Add another restaurant
+POST {{BaseUrl}}/geo/restaurants/add
+Content-Type: application/json
+
+{
+  "member": "Burger Barn",
+  "longitude": -74.008,
+  "latitude": 40.7130
+}
+
+### Add third restaurant
+POST {{BaseUrl}}/geo/restaurants/add
+Content-Type: application/json
+
+{
+  "member": "Taco Town",
+  "longitude": -74.010,
+  "latitude": 40.7125
+}
+
+### Add more distant restaurant
+POST {{BaseUrl}}/geo/restaurants/add
+Content-Type: application/json
+
+{
+  "member": "Sushi Spot",
+  "longitude": -74.020,
+  "latitude": 40.7140
+}
+
+### Find restaurants within 1km of a location (New York coordinates)
+GET {{BaseUrl}}/geo/restaurants/radius?longitude=-74.007&latitude=40.7129&radius=1&unit=km
+
+### Find restaurants within 500 meters
+GET {{BaseUrl}}/geo/restaurants/radius?longitude=-74.007&latitude=40.7129&radius=500&unit=m
+
+### Find restaurants within 5 miles (should get all)
+GET {{BaseUrl}}/geo/restaurants/radius?longitude=-74.007&latitude=40.7129&radius=5&unit=mi
+
+### Add store locations
+POST {{BaseUrl}}/geo/stores/add
+Content-Type: application/json
+
+{
+  "member": "Electronics Store",
+  "longitude": -118.2437,
+  "latitude": 34.0522
+}
+
+### Add another store in LA
+POST {{BaseUrl}}/geo/stores/add
+Content-Type: application/json
+
+{
+  "member": "Book Store",
+  "longitude": -118.2440,
+  "latitude": 34.0525
+}
+
+### Add store further away
+POST {{BaseUrl}}/geo/stores/add
+Content-Type: application/json
+
+{
+  "member": "Grocery Store",
+  "longitude": -118.2500,
+  "latitude": 34.0600
+}
+
+### Find stores within 2km of LA downtown
+GET {{BaseUrl}}/geo/stores/radius?longitude=-118.2437&latitude=34.0522&radius=2&unit=km
+
+### Find stores within 10km (should get all)
+GET {{BaseUrl}}/geo/stores/radius?longitude=-118.2437&latitude=34.0522&radius=10&unit=km
+
+### Add delivery driver locations
+POST {{BaseUrl}}/geo/drivers/add
+Content-Type: application/json
+
+{
+  "member": "driver_001",
+  "longitude": -87.6298,
+  "latitude": 41.8781
+}
+
+### Add another driver in Chicago
+POST {{BaseUrl}}/geo/drivers/add
+Content-Type: application/json
+
+{
+  "member": "driver_002",
+  "longitude": -87.6350,
+  "latitude": 41.8800
+}
+
+### Find nearby drivers within 3km
+GET {{BaseUrl}}/geo/drivers/radius?longitude=-87.6298&latitude=41.8781&radius=3&unit=km

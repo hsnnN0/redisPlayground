@@ -1,0 +1,79 @@
+### Redis Pub/Sub Operations
+### Publish a message to a channel
+POST {{BaseUrl}}/pubsub/publish/test-channel
+Content-Type: application/json
+
+{
+  "message": "Hello from publisher!"
+}
+
+### Subscribe to multiple channels (polling approach)
+POST {{BaseUrl}}/pubsub/subscribe
+Content-Type: application/json
+
+{
+  "channels": ["test-channel", "notification-channel"],
+  "timeoutSeconds": 10
+}
+
+### Test Server-Sent Events subscription (real-time)
+### Note: This will open a streaming connection
+GET {{BaseUrl}}/pubsub/subscribe/test-channel/stream
+
+### Publish multiple messages to test streaming
+POST {{BaseUrl}}/pubsub/publish/test-channel
+Content-Type: application/json
+
+{
+  "message": "Message 1 for streaming test"
+}
+
+### Publish another message
+POST {{BaseUrl}}/pubsub/publish/test-channel
+Content-Type: application/json
+
+{
+  "message": "Message 2 for streaming test"
+}
+
+### Publish final message
+POST {{BaseUrl}}/pubsub/publish/test-channel
+Content-Type: application/json
+
+{
+  "message": "Message 3 for streaming test"
+}
+
+### Publish to notification channel
+POST {{BaseUrl}}/pubsub/publish/notification-channel
+Content-Type: application/json
+
+{
+  "message": "System notification: Server maintenance scheduled"
+}
+
+### Subscribe to notification channel only
+POST {{BaseUrl}}/pubsub/subscribe
+Content-Type: application/json
+
+{
+  "channels": ["notification-channel"],
+  "timeoutSeconds": 5
+}
+
+### Test real-time chat example
+POST {{BaseUrl}}/pubsub/publish/chat:room:general
+Content-Type: application/json
+
+{
+  "message": "User123: Hello everyone!"
+}
+
+### Subscribe to chat room
+POST {{BaseUrl}}/pubsub/subscribe
+Content-Type: application/json
+
+{
+  "channels": ["chat:room:general"],
+  "timeoutSeconds": 15
+}

@@ -1,0 +1,138 @@
+### Redis Bitfield Operations (Simulated)
+### Set a bitfield value
+POST {{BaseUrl}}/bitfield/user:permissions/set
+Content-Type: application/json
+
+{
+  "offset": 0,
+  "width": 8,
+  "value": 255
+}
+
+### Get a bitfield value
+POST {{BaseUrl}}/bitfield/user:permissions/get
+Content-Type: application/json
+
+{
+  "offset": 0,
+  "width": 8
+}
+
+### Increment a bitfield value
+POST {{BaseUrl}}/bitfield/counters/incrby
+Content-Type: application/json
+
+{
+  "offset": 0,
+  "width": 32,
+  "increment": 1
+}
+
+### Set multiple bitfield values using multi-operation
+POST {{BaseUrl}}/bitfield/game:stats/operations
+Content-Type: application/json
+
+{
+  "operations": [
+    {
+      "operation": "SET",
+      "offset": 0,
+      "width": 16,
+      "value": 1000
+    },
+    {
+      "operation": "SET", 
+      "offset": 16,
+      "width": 16,
+      "value": 500
+    },
+    {
+      "operation": "SET",
+      "offset": 32,
+      "width": 16,
+      "value": 250
+    }
+  ]
+}
+
+### Get bitfield information
+GET {{BaseUrl}}/bitfield/game:stats/info
+
+### Set player score in a compact bitfield format
+POST {{BaseUrl}}/bitfield/player:scores/set
+Content-Type: application/json
+
+{
+  "offset": 0,
+  "width": 20,
+  "value": 150000
+}
+
+### Set player level
+POST {{BaseUrl}}/bitfield/player:scores/set
+Content-Type: application/json
+
+{
+  "offset": 20,
+  "width": 8,
+  "value": 85
+}
+
+### Set player achievements count
+POST {{BaseUrl}}/bitfield/player:scores/set
+Content-Type: application/json
+
+{
+  "offset": 28,
+  "width": 8,
+  "value": 42
+}
+
+### Get player score
+POST {{BaseUrl}}/bitfield/player:scores/get
+Content-Type: application/json
+
+{
+  "offset": 0,
+  "width": 20
+}
+
+### Get player level
+POST {{BaseUrl}}/bitfield/player:scores/get
+Content-Type: application/json
+
+{
+  "offset": 20,
+  "width": 8
+}
+
+### Get player achievements
+POST {{BaseUrl}}/bitfield/player:scores/get
+Content-Type: application/json
+
+{
+  "offset": 28,
+  "width": 8
+}
+
+### Increment player score by 100
+POST {{BaseUrl}}/bitfield/player:scores/incrby
+Content-Type: application/json
+
+{
+  "offset": 0,
+  "width": 20,
+  "increment": 100
+}
+
+### Get updated player score
+POST {{BaseUrl}}/bitfield/player:scores/get
+Content-Type: application/json
+
+{
+  "offset": 0,
+  "width": 20
+}
+
+### Get player stats info
+GET {{BaseUrl}}/bitfield/player:scores/info

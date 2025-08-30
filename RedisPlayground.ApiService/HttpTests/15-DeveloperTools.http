@@ -1,0 +1,107 @@
+### Developer Tools Operations
+### Execute raw Redis commands
+POST {{BaseUrl}}/devtools/command
+Content-Type: application/json
+
+{
+  "command": "SET test_key test_value"
+}
+
+### Get a value using raw command
+POST {{BaseUrl}}/devtools/command
+Content-Type: application/json
+
+{
+  "command": "GET test_key"
+}
+
+### Check if key exists
+POST {{BaseUrl}}/devtools/command
+Content-Type: application/json
+
+{
+  "command": "EXISTS test_key"
+}
+
+### Get TTL of a key
+POST {{BaseUrl}}/devtools/command
+Content-Type: application/json
+
+{
+  "command": "TTL test_key"
+}
+
+### Execute Lua script
+POST {{BaseUrl}}/devtools/lua
+Content-Type: application/json
+
+{
+  "script": "return redis.call('GET', KEYS[1])",
+  "keys": ["test_key"],
+  "args": []
+}
+
+### Execute Lua script for atomic operations
+POST {{BaseUrl}}/devtools/lua
+Content-Type: application/json
+
+{
+  "script": "local current = redis.call('GET', KEYS[1]) or '0'; local new_val = tonumber(current) + tonumber(ARGV[1]); redis.call('SET', KEYS[1], new_val); return new_val",
+  "keys": ["counter"],
+  "args": ["5"]
+}
+
+### Ping Redis server
+GET {{BaseUrl}}/devtools/ping
+
+### Debug key information
+POST {{BaseUrl}}/devtools/debug/key
+Content-Type: application/json
+
+{
+  "key": "test_key"
+}
+
+### Start monitoring (simulation)
+POST {{BaseUrl}}/devtools/monitor
+Content-Type: application/json
+
+{
+  "maxEvents": 20
+}
+
+### Export keys matching pattern
+POST {{BaseUrl}}/devtools/export
+Content-Type: application/json
+
+{
+  "pattern": "test*",
+  "maxKeys": 100
+}
+
+### Import keys from export
+POST {{BaseUrl}}/devtools/import
+Content-Type: application/json
+
+{
+  "keys": [
+    {
+      "key": "imported_key1",
+      "type": "string",
+      "value": "imported_value1",
+      "ttl": null
+    },
+    {
+      "key": "imported_key2",
+      "type": "string", 
+      "value": "imported_value2",
+      "ttl": "00:05:00"
+    }
+  ]
+}
+
+### DANGER: Flush specific database (USE WITH CAUTION)
+# DELETE {{BaseUrl}}/devtools/flush/0
+
+### DANGER: Flush all databases (USE WITH EXTREME CAUTION)
+# DELETE {{BaseUrl}}/devtools/flush

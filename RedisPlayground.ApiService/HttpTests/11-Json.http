@@ -1,0 +1,141 @@
+### Redis JSON Operations (Simulated)
+### Set a user profile JSON document
+POST {{BaseUrl}}/json/user:profile:123
+Content-Type: application/json
+
+{
+  "value": {
+    "id": 123,
+    "name": "John Doe",
+    "email": "john.doe@example.com",
+    "age": 30,
+    "address": {
+      "street": "123 Main St",
+      "city": "New York",
+      "state": "NY",
+      "zipCode": "10001"
+    },
+    "preferences": {
+      "theme": "dark",
+      "notifications": true,
+      "language": "en"
+    },
+    "tags": ["premium", "verified"]
+  }
+}
+
+### Get the complete user profile
+GET {{BaseUrl}}/json/user:profile:123
+
+### Get user profile by path (simulation)
+POST {{BaseUrl}}/json/user:profile:123/path
+Content-Type: application/json
+
+{
+  "path": "$.address"
+}
+
+### Set a new value at a specific path
+PUT {{BaseUrl}}/json/user:profile:123/path
+Content-Type: application/json
+
+{
+  "path": "preferences.theme",
+  "value": "light"
+}
+
+### Set product catalog JSON
+POST {{BaseUrl}}/json/product:catalog:electronics
+Content-Type: application/json
+
+{
+  "value": {
+    "category": "electronics",
+    "products": [
+      {
+        "id": "laptop-001",
+        "name": "Gaming Laptop",
+        "price": 1299.99,
+        "specs": {
+          "cpu": "Intel i7",
+          "ram": "16GB",
+          "storage": "512GB SSD"
+        },
+        "inStock": true
+      },
+      {
+        "id": "phone-001",
+        "name": "Smartphone",
+        "price": 699.99,
+        "specs": {
+          "screen": "6.1 inch",
+          "camera": "12MP",
+          "battery": "3000mAh"
+        },
+        "inStock": false
+      }
+    ]
+  }
+}
+
+### Get the product catalog
+GET {{BaseUrl}}/json/product:catalog:electronics
+
+### Get specific product info by path
+POST {{BaseUrl}}/json/product:catalog:electronics/path
+Content-Type: application/json
+
+{
+  "path": "$.products[0]"
+}
+
+### Update product stock status
+PUT {{BaseUrl}}/json/product:catalog:electronics/path
+Content-Type: application/json
+
+{
+  "path": "products[1].inStock",
+  "value": true
+}
+
+### Set configuration JSON
+POST {{BaseUrl}}/json/app:config
+Content-Type: application/json
+
+{
+  "value": {
+    "version": "1.0.0",
+    "features": {
+      "analytics": true,
+      "caching": true,
+      "logging": {
+        "level": "info",
+        "destinations": ["console", "file"]
+      }
+    },
+    "database": {
+      "host": "localhost",
+      "port": 5432,
+      "ssl": true
+    }
+  }
+}
+
+### Get app configuration
+GET {{BaseUrl}}/json/app:config
+
+### Get specific config section
+POST {{BaseUrl}}/json/app:config/path
+Content-Type: application/json
+
+{
+  "path": "$.features"
+}
+
+### Delete a configuration path
+DELETE {{BaseUrl}}/json/app:config/path
+Content-Type: application/json
+
+{
+  "path": "features.analytics"
+}

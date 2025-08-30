@@ -1,0 +1,81 @@
+### Redis Hash Operations
+### Set hash field
+POST {{BaseUrl}}/hashes/user:1/fields
+Content-Type: application/json
+
+{
+  "field": "name",
+  "value": "John Doe"
+}
+
+### Set another hash field
+POST {{BaseUrl}}/hashes/user:1/fields
+Content-Type: application/json
+
+{
+  "field": "email",
+  "value": "john.doe@example.com"
+}
+
+### Set age field
+POST {{BaseUrl}}/hashes/user:1/fields
+Content-Type: application/json
+
+{
+  "field": "age",
+  "value": "30"
+}
+
+### Set city field
+POST {{BaseUrl}}/hashes/user:1/fields
+Content-Type: application/json
+
+{
+  "field": "city",
+  "value": "New York"
+}
+
+### Get specific hash field
+GET {{BaseUrl}}/hashes/user:1/fields/name
+
+### Get another specific field
+GET {{BaseUrl}}/hashes/user:1/fields/email
+
+### Get entire hash
+GET {{BaseUrl}}/hashes/user:1
+
+### Set product details hash
+POST {{BaseUrl}}/hashes/product:123/fields
+Content-Type: application/json
+
+{
+  "field": "name",
+  "value": "Gaming Laptop"
+}
+
+### Set product price
+POST {{BaseUrl}}/hashes/product:123/fields
+Content-Type: application/json
+
+{
+  "field": "price",
+  "value": "1299.99"
+}
+
+### Set product category
+POST {{BaseUrl}}/hashes/product:123/fields
+Content-Type: application/json
+
+{
+  "field": "category",
+  "value": "electronics"
+}
+
+### Get product name
+GET {{BaseUrl}}/hashes/product:123/fields/name
+
+### Get product price
+GET {{BaseUrl}}/hashes/product:123/fields/price
+
+### Get entire product hash
+GET {{BaseUrl}}/hashes/product:123

@@ -1,0 +1,56 @@
+### Redis Locks Operations
+### Acquire a distributed lock
+POST {{BaseUrl}}/locks/my_resource/acquire
+Content-Type: application/json
+
+{
+  "timeoutSeconds": 30
+}
+
+### Check lock status
+GET {{BaseUrl}}/locks/my_resource/status
+
+### Extend lock timeout
+POST {{BaseUrl}}/locks/my_resource/extend
+Content-Type: application/json
+
+{
+  "token": "YOUR_LOCK_TOKEN_HERE",
+  "extendBySeconds": 30
+}
+
+### Release lock
+POST {{BaseUrl}}/locks/my_resource/release
+Content-Type: application/json
+
+{
+  "token": "YOUR_LOCK_TOKEN_HERE"
+}
+
+### Get all active locks
+GET {{BaseUrl}}/locks/active
+
+### Try to acquire another lock
+POST {{BaseUrl}}/locks/another_resource/acquire
+Content-Type: application/json
+
+{
+  "timeoutSeconds": 60
+}
+
+### Bulk lock operations
+### Acquire lock for payment processing
+POST {{BaseUrl}}/locks/payment:user:123/acquire
+Content-Type: application/json
+
+{
+  "timeoutSeconds": 300
+}
+
+### Acquire lock for inventory update
+POST {{BaseUrl}}/locks/inventory:product:456/acquire
+Content-Type: application/json
+
+{
+  "timeoutSeconds": 120
+}
