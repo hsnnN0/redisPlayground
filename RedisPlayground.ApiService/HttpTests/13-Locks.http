@@ -1,6 +1,7 @@
+@baseUrl = https://localhost:7460
 ### Redis Locks Operations
 ### Acquire a distributed lock
-POST {{BaseUrl}}/locks/my_resource/acquire
+POST {{baseUrl}}/locks/my_resource/acquire
 Content-Type: application/json
 
 {
@@ -8,10 +9,10 @@ Content-Type: application/json
 }
 
 ### Check lock status
-GET {{BaseUrl}}/locks/my_resource/status
+GET {{baseUrl}}/locks/my_resource/status
 
 ### Extend lock timeout
-POST {{BaseUrl}}/locks/my_resource/extend
+POST {{baseUrl}}/locks/my_resource/extend
 Content-Type: application/json
 
 {
@@ -20,7 +21,7 @@ Content-Type: application/json
 }
 
 ### Release lock
-POST {{BaseUrl}}/locks/my_resource/release
+POST {{baseUrl}}/locks/my_resource/release
 Content-Type: application/json
 
 {
@@ -28,10 +29,10 @@ Content-Type: application/json
 }
 
 ### Get all active locks
-GET {{BaseUrl}}/locks/active
+GET {{baseUrl}}/locks/active
 
 ### Try to acquire another lock
-POST {{BaseUrl}}/locks/another_resource/acquire
+POST {{baseUrl}}/locks/another_resource/acquire
 Content-Type: application/json
 
 {
@@ -40,7 +41,7 @@ Content-Type: application/json
 
 ### Bulk lock operations
 ### Acquire lock for payment processing
-POST {{BaseUrl}}/locks/payment:user:123/acquire
+POST {{baseUrl}}/locks/payment:user:123/acquire
 Content-Type: application/json
 
 {
@@ -48,9 +49,10 @@ Content-Type: application/json
 }
 
 ### Acquire lock for inventory update
-POST {{BaseUrl}}/locks/inventory:product:456/acquire
+POST {{baseUrl}}/locks/inventory:product:456/acquire
 Content-Type: application/json
 
 {
   "timeoutSeconds": 120
 }
+

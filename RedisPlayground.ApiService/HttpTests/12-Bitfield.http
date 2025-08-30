@@ -1,6 +1,7 @@
+@baseUrl = https://localhost:7460
 ### Redis Bitfield Operations (Simulated)
 ### Set a bitfield value
-POST {{BaseUrl}}/bitfield/user:permissions/set
+POST {{baseUrl}}/bitfield/user:permissions/set
 Content-Type: application/json
 
 {
@@ -10,7 +11,7 @@ Content-Type: application/json
 }
 
 ### Get a bitfield value
-POST {{BaseUrl}}/bitfield/user:permissions/get
+POST {{baseUrl}}/bitfield/user:permissions/get
 Content-Type: application/json
 
 {
@@ -19,7 +20,7 @@ Content-Type: application/json
 }
 
 ### Increment a bitfield value
-POST {{BaseUrl}}/bitfield/counters/incrby
+POST {{baseUrl}}/bitfield/counters/incrby
 Content-Type: application/json
 
 {
@@ -29,7 +30,7 @@ Content-Type: application/json
 }
 
 ### Set multiple bitfield values using multi-operation
-POST {{BaseUrl}}/bitfield/game:stats/operations
+POST {{baseUrl}}/bitfield/game:stats/operations
 Content-Type: application/json
 
 {
@@ -56,10 +57,10 @@ Content-Type: application/json
 }
 
 ### Get bitfield information
-GET {{BaseUrl}}/bitfield/game:stats/info
+GET {{baseUrl}}/bitfield/game:stats/info
 
 ### Set player score in a compact bitfield format
-POST {{BaseUrl}}/bitfield/player:scores/set
+POST {{baseUrl}}/bitfield/player:scores/set
 Content-Type: application/json
 
 {
@@ -69,7 +70,7 @@ Content-Type: application/json
 }
 
 ### Set player level
-POST {{BaseUrl}}/bitfield/player:scores/set
+POST {{baseUrl}}/bitfield/player:scores/set
 Content-Type: application/json
 
 {
@@ -79,7 +80,7 @@ Content-Type: application/json
 }
 
 ### Set player achievements count
-POST {{BaseUrl}}/bitfield/player:scores/set
+POST {{baseUrl}}/bitfield/player:scores/set
 Content-Type: application/json
 
 {
@@ -89,7 +90,7 @@ Content-Type: application/json
 }
 
 ### Get player score
-POST {{BaseUrl}}/bitfield/player:scores/get
+POST {{baseUrl}}/bitfield/player:scores/get
 Content-Type: application/json
 
 {
@@ -98,7 +99,7 @@ Content-Type: application/json
 }
 
 ### Get player level
-POST {{BaseUrl}}/bitfield/player:scores/get
+POST {{baseUrl}}/bitfield/player:scores/get
 Content-Type: application/json
 
 {
@@ -107,7 +108,7 @@ Content-Type: application/json
 }
 
 ### Get player achievements
-POST {{BaseUrl}}/bitfield/player:scores/get
+POST {{baseUrl}}/bitfield/player:scores/get
 Content-Type: application/json
 
 {
@@ -116,7 +117,7 @@ Content-Type: application/json
 }
 
 ### Increment player score by 100
-POST {{BaseUrl}}/bitfield/player:scores/incrby
+POST {{baseUrl}}/bitfield/player:scores/incrby
 Content-Type: application/json
 
 {
@@ -126,7 +127,7 @@ Content-Type: application/json
 }
 
 ### Get updated player score
-POST {{BaseUrl}}/bitfield/player:scores/get
+POST {{baseUrl}}/bitfield/player:scores/get
 Content-Type: application/json
 
 {
@@ -135,4 +136,5 @@ Content-Type: application/json
 }
 
 ### Get player stats info
-GET {{BaseUrl}}/bitfield/player:scores/info
+GET {{baseUrl}}/bitfield/player:scores/info
+

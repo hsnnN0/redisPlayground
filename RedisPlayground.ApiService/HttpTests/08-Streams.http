@@ -1,6 +1,7 @@
+@baseUrl = https://localhost:7460
 ### Redis Stream Operations
 ### Add event to user activity stream
-POST {{BaseUrl}}/streams/user:123:activity/add
+POST {{baseUrl}}/streams/user:123:activity/add
 Content-Type: application/json
 
 {
@@ -13,7 +14,7 @@ Content-Type: application/json
 }
 
 ### Add another event to the stream
-POST {{BaseUrl}}/streams/user:123:activity/add
+POST {{baseUrl}}/streams/user:123:activity/add
 Content-Type: application/json
 
 {
@@ -26,7 +27,7 @@ Content-Type: application/json
 }
 
 ### Add purchase event
-POST {{BaseUrl}}/streams/user:123:activity/add
+POST {{baseUrl}}/streams/user:123:activity/add
 Content-Type: application/json
 
 {
@@ -40,13 +41,13 @@ Content-Type: application/json
 }
 
 ### Read all events from the stream
-GET {{BaseUrl}}/streams/user:123:activity?startId=0&count=10
+GET {{baseUrl}}/streams/user:123:activity?startId=0&count=10
 
 ### Read recent events (limit to 5)
-GET {{BaseUrl}}/streams/user:123:activity?startId=0&count=5
+GET {{baseUrl}}/streams/user:123:activity?startId=0&count=5
 
 ### Add sensor data stream
-POST {{BaseUrl}}/streams/sensor:temperature/add
+POST {{baseUrl}}/streams/sensor:temperature/add
 Content-Type: application/json
 
 {
@@ -59,7 +60,7 @@ Content-Type: application/json
 }
 
 ### Add another sensor reading
-POST {{BaseUrl}}/streams/sensor:temperature/add
+POST {{baseUrl}}/streams/sensor:temperature/add
 Content-Type: application/json
 
 {
@@ -72,10 +73,10 @@ Content-Type: application/json
 }
 
 ### Read sensor data
-GET {{BaseUrl}}/streams/sensor:temperature?startId=0&count=10
+GET {{baseUrl}}/streams/sensor:temperature?startId=0&count=10
 
 ### Add log entry stream
-POST {{BaseUrl}}/streams/app:logs/add
+POST {{baseUrl}}/streams/app:logs/add
 Content-Type: application/json
 
 {
@@ -88,7 +89,7 @@ Content-Type: application/json
 }
 
 ### Add error log
-POST {{BaseUrl}}/streams/app:logs/add
+POST {{baseUrl}}/streams/app:logs/add
 Content-Type: application/json
 
 {
@@ -101,4 +102,5 @@ Content-Type: application/json
 }
 
 ### Read application logs
-GET {{BaseUrl}}/streams/app:logs?startId=0&count=20
+GET {{baseUrl}}/streams/app:logs?startId=0&count=20
+

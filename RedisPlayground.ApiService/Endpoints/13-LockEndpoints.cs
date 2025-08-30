@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using RedisPlayground.ApiService.Models;
 using StackExchange.Redis;
 
@@ -51,7 +52,7 @@ public static partial class RedisEndpoints
             .Produces<ActiveLocksResult>(StatusCodes.Status200OK);
     }
 
-    private static async Task<IResult> AcquireLock(string lockName, LockRequest request, IConnectionMultiplexer redis, CancellationToken ct = default)
+    private static async Task<IResult> AcquireLock(string lockName, [FromBody] LockRequest request, [FromServices] IConnectionMultiplexer redis, CancellationToken ct = default)
     {
         try
         {
@@ -83,7 +84,7 @@ public static partial class RedisEndpoints
         }
     }
 
-    private static async Task<IResult> ReleaseLock(string lockName, LockReleaseRequest request, IConnectionMultiplexer redis, CancellationToken ct = default)
+    private static async Task<IResult> ReleaseLock(string lockName, [FromBody] LockReleaseRequest request, [FromServices] IConnectionMultiplexer redis, CancellationToken ct = default)
     {
         try
         {
@@ -110,7 +111,7 @@ public static partial class RedisEndpoints
         }
     }
 
-    private static async Task<IResult> GetLockStatus(string lockName, IConnectionMultiplexer redis, CancellationToken ct = default)
+    private static async Task<IResult> GetLockStatus(string lockName, [FromServices] IConnectionMultiplexer redis, CancellationToken ct = default)
     {
         try
         {
@@ -130,7 +131,7 @@ public static partial class RedisEndpoints
         }
     }
 
-    private static async Task<IResult> ExtendLock(string lockName, LockExtendRequest request, IConnectionMultiplexer redis, CancellationToken ct = default)
+    private static async Task<IResult> ExtendLock(string lockName, [FromBody] LockExtendRequest request, [FromServices] IConnectionMultiplexer redis, CancellationToken ct = default)
     {
         try
         {
@@ -161,7 +162,7 @@ public static partial class RedisEndpoints
         }
     }
 
-    private static async Task<IResult> GetActiveLocks(IConnectionMultiplexer redis, CancellationToken ct = default)
+    private static async Task<IResult> GetActiveLocks([FromServices] IConnectionMultiplexer redis, CancellationToken ct = default)
     {
         try
         {

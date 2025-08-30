@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using RedisPlayground.ApiService.Models;
 using StackExchange.Redis;
 
@@ -62,7 +63,7 @@ public static partial class RedisEndpoints
             .Produces<KeyPatternAnalysisResult>(StatusCodes.Status200OK);
     }
 
-    private static async Task<IResult> GetRedisInfo(IConnectionMultiplexer redis, CancellationToken ct = default)
+    private static async Task<IResult> GetRedisInfo([FromServices] IConnectionMultiplexer redis, CancellationToken ct = default)
     {
         try
         {
@@ -92,7 +93,7 @@ public static partial class RedisEndpoints
         }
     }
 
-    private static async Task<IResult> GetMemoryUsage(IConnectionMultiplexer redis, CancellationToken ct = default)
+    private static async Task<IResult> GetMemoryUsage([FromServices] IConnectionMultiplexer redis, CancellationToken ct = default)
     {
         try
         {
@@ -129,7 +130,7 @@ public static partial class RedisEndpoints
         }
     }
 
-    private static async Task<IResult> GetServerStats(IConnectionMultiplexer redis, CancellationToken ct = default)
+    private static async Task<IResult> GetServerStats([FromServices] IConnectionMultiplexer redis, CancellationToken ct = default)
     {
         try
         {
@@ -166,7 +167,7 @@ public static partial class RedisEndpoints
         }
     }
 
-    private static async Task<IResult> GetClientInfo(IConnectionMultiplexer redis, CancellationToken ct = default)
+    private static async Task<IResult> GetClientInfo([FromServices] IConnectionMultiplexer redis, CancellationToken ct = default)
     {
         try
         {
@@ -190,7 +191,7 @@ public static partial class RedisEndpoints
         }
     }
 
-    private static Task<IResult> GetSlowLog(SlowLogRequest request, IConnectionMultiplexer redis, CancellationToken ct = default)
+    private static Task<IResult> GetSlowLog([FromBody] SlowLogRequest request, [FromServices] IConnectionMultiplexer redis, CancellationToken ct = default)
     {
         try
         {
@@ -214,7 +215,7 @@ public static partial class RedisEndpoints
         }
     }
 
-    private static async Task<IResult> GetKeyspaceInfo(IConnectionMultiplexer redis, CancellationToken ct = default)
+    private static async Task<IResult> GetKeyspaceInfo([FromServices] IConnectionMultiplexer redis, CancellationToken ct = default)
     {
         try
         {
@@ -270,7 +271,7 @@ public static partial class RedisEndpoints
         }
     }
 
-    private static async Task<IResult> AnalyzeKeyPattern(KeyPatternRequest request, IConnectionMultiplexer redis, CancellationToken ct = default)
+    private static async Task<IResult> AnalyzeKeyPattern([FromBody] KeyPatternRequest request, [FromServices] IConnectionMultiplexer redis, CancellationToken ct = default)
     {
         try
         {

@@ -1,6 +1,7 @@
+@baseUrl = https://localhost:7460
 ### Redis Set Operations
 ### Add members to a set
-POST {{BaseUrl}}/sets/myset/add
+POST {{baseUrl}}/sets/myset/add
 Content-Type: application/json
 
 {
@@ -8,7 +9,7 @@ Content-Type: application/json
 }
 
 ### Add more members to the set (duplicates will be ignored)
-POST {{BaseUrl}}/sets/myset/add
+POST {{baseUrl}}/sets/myset/add
 Content-Type: application/json
 
 {
@@ -16,10 +17,10 @@ Content-Type: application/json
 }
 
 ### Get all members of the set
-GET {{BaseUrl}}/sets/myset
+GET {{baseUrl}}/sets/myset
 
 ### Check if a value is a member of the set (should return true)
-POST {{BaseUrl}}/sets/myset/ismember
+POST {{baseUrl}}/sets/myset/ismember
 Content-Type: application/json
 
 {
@@ -27,7 +28,7 @@ Content-Type: application/json
 }
 
 ### Check if a value is NOT a member of the set (should return false)
-POST {{BaseUrl}}/sets/myset/ismember
+POST {{baseUrl}}/sets/myset/ismember
 Content-Type: application/json
 
 {
@@ -35,7 +36,7 @@ Content-Type: application/json
 }
 
 ### Create a user permissions set example
-POST {{BaseUrl}}/sets/user:123:permissions/add
+POST {{baseUrl}}/sets/user:123:permissions/add
 Content-Type: application/json
 
 {
@@ -43,7 +44,7 @@ Content-Type: application/json
 }
 
 ### Check user permissions
-POST {{BaseUrl}}/sets/user:123:permissions/ismember
+POST {{baseUrl}}/sets/user:123:permissions/ismember
 Content-Type: application/json
 
 {
@@ -51,10 +52,10 @@ Content-Type: application/json
 }
 
 ### Get all user permissions
-GET {{BaseUrl}}/sets/user:123:permissions
+GET {{baseUrl}}/sets/user:123:permissions
 
 ### Create tags set for an article
-POST {{BaseUrl}}/sets/article:456:tags/add
+POST {{baseUrl}}/sets/article:456:tags/add
 Content-Type: application/json
 
 {
@@ -62,4 +63,5 @@ Content-Type: application/json
 }
 
 ### Get all article tags
-GET {{BaseUrl}}/sets/article:456:tags
+GET {{baseUrl}}/sets/article:456:tags
+

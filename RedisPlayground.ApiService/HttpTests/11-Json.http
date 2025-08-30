@@ -1,6 +1,7 @@
+@baseUrl = https://localhost:7460
 ### Redis JSON Operations (Simulated)
 ### Set a user profile JSON document
-POST {{BaseUrl}}/json/user:profile:123
+POST {{baseUrl}}/json/user:profile:123
 Content-Type: application/json
 
 {
@@ -25,10 +26,10 @@ Content-Type: application/json
 }
 
 ### Get the complete user profile
-GET {{BaseUrl}}/json/user:profile:123
+GET {{baseUrl}}/json/user:profile:123
 
 ### Get user profile by path (simulation)
-POST {{BaseUrl}}/json/user:profile:123/path
+POST {{baseUrl}}/json/user:profile:123/path
 Content-Type: application/json
 
 {
@@ -36,7 +37,7 @@ Content-Type: application/json
 }
 
 ### Set a new value at a specific path
-PUT {{BaseUrl}}/json/user:profile:123/path
+PUT {{baseUrl}}/json/user:profile:123/path
 Content-Type: application/json
 
 {
@@ -45,7 +46,7 @@ Content-Type: application/json
 }
 
 ### Set product catalog JSON
-POST {{BaseUrl}}/json/product:catalog:electronics
+POST {{baseUrl}}/json/product:catalog:electronics
 Content-Type: application/json
 
 {
@@ -79,10 +80,10 @@ Content-Type: application/json
 }
 
 ### Get the product catalog
-GET {{BaseUrl}}/json/product:catalog:electronics
+GET {{baseUrl}}/json/product:catalog:electronics
 
 ### Get specific product info by path
-POST {{BaseUrl}}/json/product:catalog:electronics/path
+POST {{baseUrl}}/json/product:catalog:electronics/path
 Content-Type: application/json
 
 {
@@ -90,7 +91,7 @@ Content-Type: application/json
 }
 
 ### Update product stock status
-PUT {{BaseUrl}}/json/product:catalog:electronics/path
+PUT {{baseUrl}}/json/product:catalog:electronics/path
 Content-Type: application/json
 
 {
@@ -99,7 +100,7 @@ Content-Type: application/json
 }
 
 ### Set configuration JSON
-POST {{BaseUrl}}/json/app:config
+POST {{baseUrl}}/json/app:config
 Content-Type: application/json
 
 {
@@ -122,10 +123,10 @@ Content-Type: application/json
 }
 
 ### Get app configuration
-GET {{BaseUrl}}/json/app:config
+GET {{baseUrl}}/json/app:config
 
 ### Get specific config section
-POST {{BaseUrl}}/json/app:config/path
+POST {{baseUrl}}/json/app:config/path
 Content-Type: application/json
 
 {
@@ -133,9 +134,10 @@ Content-Type: application/json
 }
 
 ### Delete a configuration path
-DELETE {{BaseUrl}}/json/app:config/path
+DELETE {{baseUrl}}/json/app:config/path
 Content-Type: application/json
 
 {
   "path": "features.analytics"
 }
+

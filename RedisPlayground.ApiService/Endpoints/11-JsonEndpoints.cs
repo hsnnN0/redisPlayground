@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using RedisPlayground.ApiService.Models;
 using StackExchange.Redis;
 using System.Text.Json;
@@ -29,7 +30,7 @@ public static partial class RedisEndpoints
             .WithName("GetJson")
             .WithSummary("Get JSON document")
             .WithDescription("Gets a JSON document or part of it using JSONPath")
-            .Produces<JsonResult>(StatusCodes.Status200OK)
+            .Produces<Models.JsonResult>(StatusCodes.Status200OK)
             .Produces(StatusCodes.Status404NotFound);
 
         json.MapPost("/{key}/path", GetJsonPath)
@@ -37,7 +38,7 @@ public static partial class RedisEndpoints
             .WithSummary("Get JSON by path")
             .WithDescription("Gets part of a JSON document using JSONPath")
             .Accepts<JsonPathRequest>("application/json")
-            .Produces<JsonResult>(StatusCodes.Status200OK)
+            .Produces<Models.JsonResult>(StatusCodes.Status200OK)
             .Produces(StatusCodes.Status404NotFound);
 
         json.MapPut("/{key}/path", SetJsonPath)
@@ -55,7 +56,7 @@ public static partial class RedisEndpoints
             .Produces<NumericResult>(StatusCodes.Status200OK);
     }
 
-    private static async Task<IResult> SetJson(string key, JsonSetRequest request, IConnectionMultiplexer redis, CancellationToken ct = default)
+    private static async Task<IResult> SetJson(string key, [FromBody] JsonSetRequest request, [FromServices] IConnectionMultiplexer redis, CancellationToken ct = default)
     {
         try
         {
@@ -72,7 +73,7 @@ public static partial class RedisEndpoints
         }
     }
 
-    private static async Task<IResult> GetJson(string key, IConnectionMultiplexer redis, CancellationToken ct = default)
+    private static async Task<IResult> GetJson(string key, [FromServices] IConnectionMultiplexer redis, CancellationToken ct = default)
     {
         try
         {
@@ -81,7 +82,7 @@ public static partial class RedisEndpoints
             if (!value.HasValue)
                 return TypedResults.NotFound();
 
-            return TypedResults.Ok(new JsonResult(key, value!));
+            return TypedResults.Ok(new Models.JsonResult(key, value!));
         }
         catch (Exception ex)
         {
@@ -89,7 +90,7 @@ public static partial class RedisEndpoints
         }
     }
 
-    private static async Task<IResult> GetJsonPath(string key, JsonPathRequest request, IConnectionMultiplexer redis, CancellationToken ct = default)
+    private static async Task<IResult> GetJsonPath(string key, [FromBody] JsonPathRequest request, [FromServices] IConnectionMultiplexer redis, CancellationToken ct = default)
     {
         try
         {
@@ -99,7 +100,7 @@ public static partial class RedisEndpoints
                 return TypedResults.NotFound();
 
             // This is a simulation - in production you'd use RedisJSON's JSONPath support
-            return TypedResults.Ok(new JsonResult(key, value!));
+            return TypedResults.Ok(new Models.JsonResult(key, value!));
         }
         catch (Exception ex)
         {
@@ -107,7 +108,7 @@ public static partial class RedisEndpoints
         }
     }
 
-    private static async Task<IResult> SetJsonPath(string key, JsonPathSetRequest request, IConnectionMultiplexer redis, CancellationToken ct = default)
+    private static async Task<IResult> SetJsonPath(string key, [FromBody] JsonPathSetRequest request, [FromServices] IConnectionMultiplexer redis, CancellationToken ct = default)
     {
         try
         {
@@ -123,7 +124,7 @@ public static partial class RedisEndpoints
         }
     }
 
-    private static async Task<IResult> DeleteJsonPath(string key, JsonPathRequest request, IConnectionMultiplexer redis, CancellationToken ct = default)
+    private static async Task<IResult> DeleteJsonPath(string key, [FromBody] JsonPathRequest request, [FromServices] IConnectionMultiplexer redis, CancellationToken ct = default)
     {
         try
         {

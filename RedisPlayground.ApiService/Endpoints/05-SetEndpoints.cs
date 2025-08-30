@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using RedisPlayground.ApiService.Models;
 using StackExchange.Redis;
 
@@ -38,7 +39,7 @@ public static partial class RedisEndpoints
             .Produces<BooleanResult>(StatusCodes.Status200OK);
     }
 
-    private static async Task<IResult> AddToSet(string key, SetAddRequest request, IConnectionMultiplexer redis, CancellationToken ct = default)
+    private static async Task<IResult> AddToSet(string key, [FromBody] SetAddRequest request, [FromServices] IConnectionMultiplexer redis, CancellationToken ct = default)
     {
         try
         {
@@ -52,7 +53,7 @@ public static partial class RedisEndpoints
         }
     }
 
-    private static async Task<IResult> GetSet(string key, IConnectionMultiplexer redis, CancellationToken ct = default)
+    private static async Task<IResult> GetSet(string key, [FromServices] IConnectionMultiplexer redis, CancellationToken ct = default)
     {
         try
         {
@@ -67,7 +68,7 @@ public static partial class RedisEndpoints
         }
     }
 
-    private static async Task<IResult> IsSetMember(string key, SetMemberRequest request, IConnectionMultiplexer redis, CancellationToken ct = default)
+    private static async Task<IResult> IsSetMember(string key, [FromBody] SetMemberRequest request, [FromServices] IConnectionMultiplexer redis, CancellationToken ct = default)
     {
         try
         {

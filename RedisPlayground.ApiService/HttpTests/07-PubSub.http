@@ -1,6 +1,7 @@
+@baseUrl = https://localhost:7460
 ### Redis Pub/Sub Operations
 ### Publish a message to a channel
-POST {{BaseUrl}}/pubsub/publish/test-channel
+POST {{baseUrl}}/pubsub/publish/test-channel
 Content-Type: application/json
 
 {
@@ -8,7 +9,7 @@ Content-Type: application/json
 }
 
 ### Subscribe to multiple channels (polling approach)
-POST {{BaseUrl}}/pubsub/subscribe
+POST {{baseUrl}}/pubsub/subscribe
 Content-Type: application/json
 
 {
@@ -18,10 +19,10 @@ Content-Type: application/json
 
 ### Test Server-Sent Events subscription (real-time)
 ### Note: This will open a streaming connection
-GET {{BaseUrl}}/pubsub/subscribe/test-channel/stream
+GET {{baseUrl}}/pubsub/subscribe/test-channel/stream
 
 ### Publish multiple messages to test streaming
-POST {{BaseUrl}}/pubsub/publish/test-channel
+POST {{baseUrl}}/pubsub/publish/test-channel
 Content-Type: application/json
 
 {
@@ -29,7 +30,7 @@ Content-Type: application/json
 }
 
 ### Publish another message
-POST {{BaseUrl}}/pubsub/publish/test-channel
+POST {{baseUrl}}/pubsub/publish/test-channel
 Content-Type: application/json
 
 {
@@ -37,7 +38,7 @@ Content-Type: application/json
 }
 
 ### Publish final message
-POST {{BaseUrl}}/pubsub/publish/test-channel
+POST {{baseUrl}}/pubsub/publish/test-channel
 Content-Type: application/json
 
 {
@@ -45,7 +46,7 @@ Content-Type: application/json
 }
 
 ### Publish to notification channel
-POST {{BaseUrl}}/pubsub/publish/notification-channel
+POST {{baseUrl}}/pubsub/publish/notification-channel
 Content-Type: application/json
 
 {
@@ -53,7 +54,7 @@ Content-Type: application/json
 }
 
 ### Subscribe to notification channel only
-POST {{BaseUrl}}/pubsub/subscribe
+POST {{baseUrl}}/pubsub/subscribe
 Content-Type: application/json
 
 {
@@ -62,7 +63,7 @@ Content-Type: application/json
 }
 
 ### Test real-time chat example
-POST {{BaseUrl}}/pubsub/publish/chat:room:general
+POST {{baseUrl}}/pubsub/publish/chat:room:general
 Content-Type: application/json
 
 {
@@ -70,10 +71,11 @@ Content-Type: application/json
 }
 
 ### Subscribe to chat room
-POST {{BaseUrl}}/pubsub/subscribe
+POST {{baseUrl}}/pubsub/subscribe
 Content-Type: application/json
 
 {
   "channels": ["chat:room:general"],
   "timeoutSeconds": 15
 }
+

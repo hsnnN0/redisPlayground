@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using RedisPlayground.ApiService.Models;
 using StackExchange.Redis;
 
@@ -31,7 +32,7 @@ public static partial class RedisEndpoints
             .Produces<Models.GeoRadiusResult>(StatusCodes.Status200OK);
     }
 
-    private static async Task<IResult> AddGeoLocation(string key, GeoAddRequest request, IConnectionMultiplexer redis, CancellationToken ct = default)
+    private static async Task<IResult> AddGeoLocation(string key, [FromBody] GeoAddRequest request, [FromServices] IConnectionMultiplexer redis, CancellationToken ct = default)
     {
         try
         {
@@ -45,7 +46,7 @@ public static partial class RedisEndpoints
         }
     }
 
-    private static async Task<IResult> GetGeoRadius(string key, IConnectionMultiplexer redis, double longitude = 0, double latitude = 0, double radius = 1000, string unit = "m", CancellationToken ct = default)
+    private static async Task<IResult> GetGeoRadius(string key, [FromServices] IConnectionMultiplexer redis, double longitude = 0, double latitude = 0, double radius = 1000, string unit = "m", CancellationToken ct = default)
     {
         try
         {

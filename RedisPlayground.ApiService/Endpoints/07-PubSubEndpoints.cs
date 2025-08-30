@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using RedisPlayground.ApiService.Models;
 using StackExchange.Redis;
 
@@ -38,7 +39,7 @@ public static partial class RedisEndpoints
             .Produces(StatusCodes.Status200OK, contentType: "text/event-stream");
     }
 
-    private static async Task<IResult> PublishMessage(string channel, PublishRequest request, IConnectionMultiplexer redis, CancellationToken ct = default)
+    private static async Task<IResult> PublishMessage(string channel, [FromBody] PublishRequest request, [FromServices] IConnectionMultiplexer redis, CancellationToken ct = default)
     {
         try
         {
@@ -52,7 +53,7 @@ public static partial class RedisEndpoints
         }
     }
 
-    private static async Task<IResult> SubscribeToChannels(SubscribeRequest request, IConnectionMultiplexer redis, CancellationToken ct = default)
+    private static async Task<IResult> SubscribeToChannels([FromBody] SubscribeRequest request, [FromServices] IConnectionMultiplexer redis, CancellationToken ct = default)
     {
         try
         {

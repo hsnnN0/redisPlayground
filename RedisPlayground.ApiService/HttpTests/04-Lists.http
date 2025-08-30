@@ -1,6 +1,7 @@
+@baseUrl = https://localhost:7460
 ### Redis List Operations
 ### Push values to the left of a list
-POST {{BaseUrl}}/lists/mylist/push
+POST {{baseUrl}}/lists/mylist/push
 Content-Type: application/json
 
 {
@@ -9,7 +10,7 @@ Content-Type: application/json
 }
 
 ### Push values to the right of a list
-POST {{BaseUrl}}/lists/mylist/push
+POST {{baseUrl}}/lists/mylist/push
 Content-Type: application/json
 
 {
@@ -18,13 +19,13 @@ Content-Type: application/json
 }
 
 ### Get all items from a list
-GET {{BaseUrl}}/lists/mylist
+GET {{baseUrl}}/lists/mylist
 
 ### Get a range of items from a list (first 3 items)
-GET {{BaseUrl}}/lists/mylist?start=0&stop=2
+GET {{baseUrl}}/lists/mylist?start=0&stop=2
 
 ### Pop from the left of the list
-POST {{BaseUrl}}/lists/mylist/pop
+POST {{baseUrl}}/lists/mylist/pop
 Content-Type: application/json
 
 {
@@ -32,7 +33,7 @@ Content-Type: application/json
 }
 
 ### Pop from the right of the list
-POST {{BaseUrl}}/lists/mylist/pop
+POST {{baseUrl}}/lists/mylist/pop
 Content-Type: application/json
 
 {
@@ -40,7 +41,7 @@ Content-Type: application/json
 }
 
 ### Create a task queue example
-POST {{BaseUrl}}/lists/task_queue/push
+POST {{baseUrl}}/lists/task_queue/push
 Content-Type: application/json
 
 {
@@ -49,7 +50,7 @@ Content-Type: application/json
 }
 
 ### Process tasks (pop from left - FIFO)
-POST {{BaseUrl}}/lists/task_queue/pop
+POST {{baseUrl}}/lists/task_queue/pop
 Content-Type: application/json
 
 {
@@ -57,4 +58,5 @@ Content-Type: application/json
 }
 
 ### Check remaining tasks
-GET {{BaseUrl}}/lists/task_queue
+GET {{baseUrl}}/lists/task_queue
+

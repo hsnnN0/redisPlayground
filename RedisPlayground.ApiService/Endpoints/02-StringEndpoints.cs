@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using RedisPlayground.ApiService.Models;
 using StackExchange.Redis;
 
@@ -42,7 +43,7 @@ public static partial class RedisEndpoints
     /// <summary>
     /// Sets a string value with optional expiration
     /// </summary>
-    private static async Task<IResult> SetString(string key, SetStringRequest request, IConnectionMultiplexer redis, CancellationToken ct = default)
+    private static async Task<IResult> SetString(string key, [FromBody] SetStringRequest request, [FromServices] IConnectionMultiplexer redis, CancellationToken ct = default)
     {
         try
         {
@@ -60,7 +61,7 @@ public static partial class RedisEndpoints
     /// <summary>
     /// Gets a string value by key
     /// </summary>
-    private static async Task<IResult> GetString(string key, IConnectionMultiplexer redis, CancellationToken ct = default)
+    private static async Task<IResult> GetString(string key, [FromServices] IConnectionMultiplexer redis, CancellationToken ct = default)
     {
         try
         {
@@ -80,7 +81,7 @@ public static partial class RedisEndpoints
     /// <summary>
     /// Increments a numeric string value
     /// </summary>
-    private static async Task<IResult> IncrementString(string key, IncrementRequest request, IConnectionMultiplexer redis, CancellationToken ct = default)
+    private static async Task<IResult> IncrementString(string key, [FromBody] IncrementRequest request, [FromServices] IConnectionMultiplexer redis, CancellationToken ct = default)
     {
         try
         {

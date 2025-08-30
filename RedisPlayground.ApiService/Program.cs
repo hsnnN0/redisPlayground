@@ -21,11 +21,7 @@ builder.Services.ConfigureHttpJsonOptions(opts =>
     opts.SerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
 });
 
-// Health checks and caching
-builder.Services.AddHealthChecks();
 builder.AddRedisDistributedCache("cache");
-
-// Add Aspire-managed Redis client for advanced operations
 builder.AddRedisClient("cache");
 
 var app = builder.Build();

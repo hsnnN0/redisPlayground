@@ -1,6 +1,8 @@
+@baseUrl = https://localhost:7460
+
 ### Redis String Operations
 ### Set string value with expiration
-POST {{BaseUrl}}/strings/test_string
+POST {{baseUrl}}/strings/test_string
 Content-Type: application/json
 
 {
@@ -9,10 +11,10 @@ Content-Type: application/json
 }
 
 ### Get string value
-GET {{BaseUrl}}/strings/test_string
+GET {{baseUrl}}/strings/test_string
 
 ### Set string without expiration
-POST {{BaseUrl}}/strings/user:name:123
+POST {{baseUrl}}/strings/user:name:123
 Content-Type: application/json
 
 {
@@ -20,10 +22,10 @@ Content-Type: application/json
 }
 
 ### Get user name
-GET {{BaseUrl}}/strings/user:name:123
+GET {{baseUrl}}/strings/user:name:123
 
 ### Set numeric string for increment operations
-POST {{BaseUrl}}/strings/counter
+POST {{baseUrl}}/strings/counter
 Content-Type: application/json
 
 {
@@ -31,7 +33,7 @@ Content-Type: application/json
 }
 
 ### Increment counter by 1 (default)
-POST {{BaseUrl}}/strings/counter/increment
+POST {{baseUrl}}/strings/counter/increment
 Content-Type: application/json
 
 {
@@ -39,7 +41,7 @@ Content-Type: application/json
 }
 
 ### Increment counter by 5
-POST {{BaseUrl}}/strings/counter/increment
+POST {{baseUrl}}/strings/counter/increment
 Content-Type: application/json
 
 {
@@ -47,10 +49,10 @@ Content-Type: application/json
 }
 
 ### Get counter value
-GET {{BaseUrl}}/strings/counter
+GET {{baseUrl}}/strings/counter
 
 ### Decrement counter (negative increment)
-POST {{BaseUrl}}/strings/counter/increment
+POST {{baseUrl}}/strings/counter/increment
 Content-Type: application/json
 
 {
@@ -58,10 +60,10 @@ Content-Type: application/json
 }
 
 ### Get final counter value
-GET {{BaseUrl}}/strings/counter
+GET {{baseUrl}}/strings/counter
 
 ### Set application version
-POST {{BaseUrl}}/strings/app:version
+POST {{baseUrl}}/strings/app:version
 Content-Type: application/json
 
 {
@@ -70,10 +72,10 @@ Content-Type: application/json
 }
 
 ### Get application version
-GET {{BaseUrl}}/strings/app:version
+GET {{baseUrl}}/strings/app:version
 
 ### Set user session data
-POST {{BaseUrl}}/strings/session:abc123
+POST {{baseUrl}}/strings/session:abc123
 Content-Type: application/json
 
 {
@@ -82,4 +84,4 @@ Content-Type: application/json
 }
 
 ### Get session data
-GET {{BaseUrl}}/strings/session:abc123
+GET {{baseUrl}}/strings/session:abc123

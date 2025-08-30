@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using RedisPlayground.ApiService.Models;
 using StackExchange.Redis;
 
@@ -42,7 +43,7 @@ public static partial class RedisEndpoints
     /// <summary>
     /// Sets a field-value pair in a hash
     /// </summary>
-    private static async Task<IResult> SetHashField(string key, HashFieldRequest request, IConnectionMultiplexer redis, CancellationToken ct = default)
+    private static async Task<IResult> SetHashField(string key, [FromBody] HashFieldRequest request, [FromServices] IConnectionMultiplexer redis, CancellationToken ct = default)
     {
         try
         {
@@ -59,7 +60,7 @@ public static partial class RedisEndpoints
     /// <summary>
     /// Gets all field-value pairs in a hash
     /// </summary>
-    private static async Task<IResult> GetHash(string key, IConnectionMultiplexer redis, CancellationToken ct = default)
+    private static async Task<IResult> GetHash(string key, [FromServices] IConnectionMultiplexer redis, CancellationToken ct = default)
     {
         try
         {
@@ -80,7 +81,7 @@ public static partial class RedisEndpoints
     /// <summary>
     /// Gets a specific field value from a hash
     /// </summary>
-    private static async Task<IResult> GetHashField(string key, string field, IConnectionMultiplexer redis, CancellationToken ct = default)
+    private static async Task<IResult> GetHashField(string key, string field, [FromServices] IConnectionMultiplexer redis, CancellationToken ct = default)
     {
         try
         {

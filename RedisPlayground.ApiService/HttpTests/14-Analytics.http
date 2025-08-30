@@ -1,18 +1,19 @@
+@baseUrl = https://localhost:7460
 ### Analytics & Monitoring Operations
 ### Get Redis server information
-GET {{BaseUrl}}/analytics/info
+GET {{baseUrl}}/analytics/info
 
 ### Get memory usage statistics
-GET {{BaseUrl}}/analytics/memory
+GET {{baseUrl}}/analytics/memory
 
 ### Get server performance statistics
-GET {{BaseUrl}}/analytics/stats
+GET {{baseUrl}}/analytics/stats
 
 ### Get connected client information
-GET {{BaseUrl}}/analytics/clients
+GET {{baseUrl}}/analytics/clients
 
 ### Get slow query log
-POST {{BaseUrl}}/analytics/slowlog
+POST {{baseUrl}}/analytics/slowlog
 Content-Type: application/json
 
 {
@@ -20,10 +21,10 @@ Content-Type: application/json
 }
 
 ### Get keyspace information
-GET {{BaseUrl}}/analytics/keyspace
+GET {{baseUrl}}/analytics/keyspace
 
 ### Analyze key patterns
-POST {{BaseUrl}}/analytics/keys/pattern
+POST {{baseUrl}}/analytics/keys/pattern
 Content-Type: application/json
 
 {
@@ -32,7 +33,7 @@ Content-Type: application/json
 }
 
 ### Analyze cache key patterns
-POST {{BaseUrl}}/analytics/keys/pattern
+POST {{baseUrl}}/analytics/keys/pattern
 Content-Type: application/json
 
 {
@@ -41,7 +42,7 @@ Content-Type: application/json
 }
 
 ### Analyze session key patterns
-POST {{BaseUrl}}/analytics/keys/pattern
+POST {{baseUrl}}/analytics/keys/pattern
 Content-Type: application/json
 
 {
@@ -51,10 +52,11 @@ Content-Type: application/json
 
 ### Get comprehensive analytics
 ### This demonstrates getting all analytics data
-GET {{BaseUrl}}/analytics/info
+GET {{baseUrl}}/analytics/info
 ###
-GET {{BaseUrl}}/analytics/memory
+GET {{baseUrl}}/analytics/memory
 ###
-GET {{BaseUrl}}/analytics/stats
+GET {{baseUrl}}/analytics/stats
 ###
-GET {{BaseUrl}}/analytics/clients
+GET {{baseUrl}}/analytics/clients
+

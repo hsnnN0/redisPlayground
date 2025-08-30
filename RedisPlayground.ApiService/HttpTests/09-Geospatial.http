@@ -1,6 +1,7 @@
+@baseUrl = https://localhost:7460
 ### Redis Geospatial Operations
 ### Add restaurant locations
-POST {{BaseUrl}}/geo/restaurants/add
+POST {{baseUrl}}/geo/restaurants/add
 Content-Type: application/json
 
 {
@@ -10,7 +11,7 @@ Content-Type: application/json
 }
 
 ### Add another restaurant
-POST {{BaseUrl}}/geo/restaurants/add
+POST {{baseUrl}}/geo/restaurants/add
 Content-Type: application/json
 
 {
@@ -20,7 +21,7 @@ Content-Type: application/json
 }
 
 ### Add third restaurant
-POST {{BaseUrl}}/geo/restaurants/add
+POST {{baseUrl}}/geo/restaurants/add
 Content-Type: application/json
 
 {
@@ -30,7 +31,7 @@ Content-Type: application/json
 }
 
 ### Add more distant restaurant
-POST {{BaseUrl}}/geo/restaurants/add
+POST {{baseUrl}}/geo/restaurants/add
 Content-Type: application/json
 
 {
@@ -40,16 +41,16 @@ Content-Type: application/json
 }
 
 ### Find restaurants within 1km of a location (New York coordinates)
-GET {{BaseUrl}}/geo/restaurants/radius?longitude=-74.007&latitude=40.7129&radius=1&unit=km
+GET {{baseUrl}}/geo/restaurants/radius?longitude=-74.007&latitude=40.7129&radius=1&unit=km
 
 ### Find restaurants within 500 meters
-GET {{BaseUrl}}/geo/restaurants/radius?longitude=-74.007&latitude=40.7129&radius=500&unit=m
+GET {{baseUrl}}/geo/restaurants/radius?longitude=-74.007&latitude=40.7129&radius=500&unit=m
 
 ### Find restaurants within 5 miles (should get all)
-GET {{BaseUrl}}/geo/restaurants/radius?longitude=-74.007&latitude=40.7129&radius=5&unit=mi
+GET {{baseUrl}}/geo/restaurants/radius?longitude=-74.007&latitude=40.7129&radius=5&unit=mi
 
 ### Add store locations
-POST {{BaseUrl}}/geo/stores/add
+POST {{baseUrl}}/geo/stores/add
 Content-Type: application/json
 
 {
@@ -59,7 +60,7 @@ Content-Type: application/json
 }
 
 ### Add another store in LA
-POST {{BaseUrl}}/geo/stores/add
+POST {{baseUrl}}/geo/stores/add
 Content-Type: application/json
 
 {
@@ -69,7 +70,7 @@ Content-Type: application/json
 }
 
 ### Add store further away
-POST {{BaseUrl}}/geo/stores/add
+POST {{baseUrl}}/geo/stores/add
 Content-Type: application/json
 
 {
@@ -79,13 +80,13 @@ Content-Type: application/json
 }
 
 ### Find stores within 2km of LA downtown
-GET {{BaseUrl}}/geo/stores/radius?longitude=-118.2437&latitude=34.0522&radius=2&unit=km
+GET {{baseUrl}}/geo/stores/radius?longitude=-118.2437&latitude=34.0522&radius=2&unit=km
 
 ### Find stores within 10km (should get all)
-GET {{BaseUrl}}/geo/stores/radius?longitude=-118.2437&latitude=34.0522&radius=10&unit=km
+GET {{baseUrl}}/geo/stores/radius?longitude=-118.2437&latitude=34.0522&radius=10&unit=km
 
 ### Add delivery driver locations
-POST {{BaseUrl}}/geo/drivers/add
+POST {{baseUrl}}/geo/drivers/add
 Content-Type: application/json
 
 {
@@ -95,7 +96,7 @@ Content-Type: application/json
 }
 
 ### Add another driver in Chicago
-POST {{BaseUrl}}/geo/drivers/add
+POST {{baseUrl}}/geo/drivers/add
 Content-Type: application/json
 
 {
@@ -105,4 +106,5 @@ Content-Type: application/json
 }
 
 ### Find nearby drivers within 3km
-GET {{BaseUrl}}/geo/drivers/radius?longitude=-87.6298&latitude=41.8781&radius=3&unit=km
+GET {{baseUrl}}/geo/drivers/radius?longitude=-87.6298&latitude=41.8781&radius=3&unit=km
+

@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using RedisPlayground.ApiService.Models;
 using StackExchange.Redis;
 
@@ -52,7 +53,7 @@ public static partial class RedisEndpoints
             .Produces<BitfieldInfoResult>(StatusCodes.Status200OK);
     }
 
-    private static async Task<IResult> BitfieldSet(string key, BitfieldSetRequest request, IConnectionMultiplexer redis, CancellationToken ct = default)
+    private static async Task<IResult> BitfieldSet(string key, [FromBody] BitfieldSetRequest request, [FromServices] IConnectionMultiplexer redis, CancellationToken ct = default)
     {
         try
         {
@@ -68,7 +69,7 @@ public static partial class RedisEndpoints
         }
     }
 
-    private static async Task<IResult> BitfieldGet(string key, BitfieldGetRequest request, IConnectionMultiplexer redis, CancellationToken ct = default)
+    private static async Task<IResult> BitfieldGet(string key, [FromBody] BitfieldGetRequest request, [FromServices] IConnectionMultiplexer redis, CancellationToken ct = default)
     {
         try
         {
@@ -83,7 +84,7 @@ public static partial class RedisEndpoints
         }
     }
 
-    private static async Task<IResult> BitfieldIncrBy(string key, BitfieldIncrByRequest request, IConnectionMultiplexer redis, CancellationToken ct = default)
+    private static async Task<IResult> BitfieldIncrBy(string key, [FromBody] BitfieldIncrByRequest request, [FromServices] IConnectionMultiplexer redis, CancellationToken ct = default)
     {
         try
         {
@@ -101,7 +102,7 @@ public static partial class RedisEndpoints
         }
     }
 
-    private static async Task<IResult> BitfieldMultiOperation(string key, BitfieldMultiRequest request, IConnectionMultiplexer redis, CancellationToken ct = default)
+    private static async Task<IResult> BitfieldMultiOperation(string key, [FromBody] BitfieldMultiRequest request, [FromServices] IConnectionMultiplexer redis, CancellationToken ct = default)
     {
         try
         {
@@ -139,7 +140,7 @@ public static partial class RedisEndpoints
         }
     }
 
-    private static async Task<IResult> BitfieldInfo(string key, IConnectionMultiplexer redis, CancellationToken ct = default)
+    private static async Task<IResult> BitfieldInfo(string key, [FromServices] IConnectionMultiplexer redis, CancellationToken ct = default)
     {
         try
         {

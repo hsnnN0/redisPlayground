@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using RedisPlayground.ApiService.Models;
 using StackExchange.Redis;
 using System.Text;
@@ -73,7 +74,7 @@ public static partial class RedisEndpoints
             .Produces<ImportResult>(StatusCodes.Status200OK);
     }
 
-    private static async Task<IResult> ExecuteRedisCommand(RedisCommandRequest request, IConnectionMultiplexer redis, CancellationToken ct = default)
+    private static async Task<IResult> ExecuteRedisCommand([FromBody] RedisCommandRequest request, [FromServices] IConnectionMultiplexer redis, CancellationToken ct = default)
     {
         try
         {
@@ -136,7 +137,7 @@ public static partial class RedisEndpoints
         }
     }
 
-    private static async Task<IResult> ExecuteLuaScript(LuaScriptRequest request, IConnectionMultiplexer redis, CancellationToken ct = default)
+    private static async Task<IResult> ExecuteLuaScript([FromBody] LuaScriptRequest request, [FromServices] IConnectionMultiplexer redis, CancellationToken ct = default)
     {
         try
         {
@@ -165,7 +166,7 @@ public static partial class RedisEndpoints
         }
     }
 
-    private static async Task<IResult> PingRedis(IConnectionMultiplexer redis, CancellationToken ct = default)
+    private static async Task<IResult> PingRedis([FromServices] IConnectionMultiplexer redis, CancellationToken ct = default)
     {
         try
         {
@@ -192,7 +193,7 @@ public static partial class RedisEndpoints
         }
     }
 
-    private static async Task<IResult> DebugKey(DebugKeyRequest request, IConnectionMultiplexer redis, CancellationToken ct = default)
+    private static async Task<IResult> DebugKey([FromBody] DebugKeyRequest request, [FromServices] IConnectionMultiplexer redis, CancellationToken ct = default)
     {
         try
         {
@@ -251,7 +252,7 @@ public static partial class RedisEndpoints
         }
     }
 
-    private static Task<IResult> StartMonitoring(MonitorRequest request, IConnectionMultiplexer redis, CancellationToken ct = default)
+    private static Task<IResult> StartMonitoring([FromBody] MonitorRequest request, [FromServices] IConnectionMultiplexer redis, CancellationToken ct = default)
     {
         try
         {
@@ -278,7 +279,7 @@ public static partial class RedisEndpoints
         }
     }
 
-    private static async Task<IResult> FlushDatabase(int? database, IConnectionMultiplexer redis, CancellationToken ct = default)
+    private static async Task<IResult> FlushDatabase(int? database, [FromServices] IConnectionMultiplexer redis, CancellationToken ct = default)
     {
         try
         {
@@ -301,7 +302,7 @@ public static partial class RedisEndpoints
         }
     }
 
-    private static async Task<IResult> ExportKeys(ExportKeysRequest request, IConnectionMultiplexer redis, CancellationToken ct = default)
+    private static async Task<IResult> ExportKeys([FromBody] ExportKeysRequest request, [FromServices] IConnectionMultiplexer redis, CancellationToken ct = default)
     {
         try
         {
@@ -355,7 +356,7 @@ public static partial class RedisEndpoints
         }
     }
 
-    private static async Task<IResult> ImportKeys(ImportKeysRequest request, IConnectionMultiplexer redis, CancellationToken ct = default)
+    private static async Task<IResult> ImportKeys([FromBody] ImportKeysRequest request, [FromServices] IConnectionMultiplexer redis, CancellationToken ct = default)
     {
         try
         {

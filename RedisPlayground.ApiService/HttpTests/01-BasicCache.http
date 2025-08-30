@@ -1,46 +1,57 @@
-### Basic Cache Operations
-### Set a cache entry (plain text in body)
-POST {{BaseUrl}}/cache/test_key
-Content-Type: text/plain
+@baseUrl = https://localhost:7460
 
-Hello Redis!
+### Basic Cache Operations
+### Set a cache entry (JSON request)
+POST {{baseUrl}}/cache/test_key
+Content-Type: application/json
+
+{
+  "value": "Hello Redis!",
+  "expirationMinutes": 5
+}
 
 ### Get a cache entry
-GET {{BaseUrl}}/cache/test_key
+GET {{baseUrl}}/cache/test_key
 
 ### Delete a cache entry
-DELETE {{BaseUrl}}/cache/test_key
+DELETE {{baseUrl}}/cache/test_key
 
 ### Set another cache entry with different content
-POST {{BaseUrl}}/cache/user:123
-Content-Type: text/plain
+POST {{baseUrl}}/cache/user:123
+Content-Type: application/json
 
-John Doe
+{
+  "value": "John Doe",
+  "expirationMinutes": 10
+}
 
 ### Get user data
-GET {{BaseUrl}}/cache/user:123
+GET {{baseUrl}}/cache/user:123
 
 ### Set JSON data as text
-POST {{BaseUrl}}/cache/config:app
-Content-Type: text/plain
+POST {{baseUrl}}/cache/config:app
+Content-Type: application/json
 
-{"theme": "dark", "version": "1.0"}
+{
+  "value": "{\"theme\": \"dark\", \"version\": \"1.0\"}",
+  "expirationMinutes": 15
+}
 
 ### Get JSON config
-GET {{BaseUrl}}/cache/config:app
+GET {{baseUrl}}/cache/config:app
 
 ### Set a longer value
-POST {{BaseUrl}}/cache/description:product:456
+POST {{baseUrl}}/cache/description:product:456
 Content-Type: text/plain
 
 This is a detailed product description that demonstrates how the basic cache can store longer text content with proper expiration.
 
 ### Get the description
-GET {{BaseUrl}}/cache/description:product:456
+GET {{baseUrl}}/cache/description:product:456
 
 ### Clean up - delete all test entries
-DELETE {{BaseUrl}}/cache/user:123
+DELETE {{baseUrl}}/cache/user:123
 
-DELETE {{BaseUrl}}/cache/config:app
+DELETE {{baseUrl}}/cache/config:app
 
-DELETE {{BaseUrl}}/cache/description:product:456
+DELETE {{baseUrl}}/cache/description:product:456

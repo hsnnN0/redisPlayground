@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using RedisPlayground.ApiService.Models;
 using StackExchange.Redis;
 
@@ -42,7 +43,7 @@ public static partial class RedisEndpoints
     /// <summary>
     /// Pushes values to a list
     /// </summary>
-    private static async Task<IResult> PushToList(string key, ListPushRequest request, IConnectionMultiplexer redis, CancellationToken ct = default)
+    private static async Task<IResult> PushToList(string key, [FromBody] ListPushRequest request, [FromServices] IConnectionMultiplexer redis, CancellationToken ct = default)
     {
         try
         {
@@ -67,7 +68,7 @@ public static partial class RedisEndpoints
     /// <summary>
     /// Pops a value from a list
     /// </summary>
-    private static async Task<IResult> PopFromList(string key, ListPopRequest request, IConnectionMultiplexer redis, CancellationToken ct = default)
+    private static async Task<IResult> PopFromList(string key, [FromBody] ListPopRequest request, [FromServices] IConnectionMultiplexer redis, CancellationToken ct = default)
     {
         try
         {
@@ -96,7 +97,7 @@ public static partial class RedisEndpoints
     /// <summary>
     /// Gets a range of elements from a list
     /// </summary>
-    private static async Task<IResult> GetList(string key, IConnectionMultiplexer redis, int start = 0, int stop = -1, CancellationToken ct = default)
+    private static async Task<IResult> GetList(string key, [FromServices] IConnectionMultiplexer redis, int start = 0, int stop = -1, CancellationToken ct = default)
     {
         try
         {

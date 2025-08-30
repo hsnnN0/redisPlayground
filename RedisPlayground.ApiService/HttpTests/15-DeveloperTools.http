@@ -1,6 +1,7 @@
+@baseUrl = https://localhost:7460
 ### Developer Tools Operations
 ### Execute raw Redis commands
-POST {{BaseUrl}}/devtools/command
+POST {{baseUrl}}/devtools/command
 Content-Type: application/json
 
 {
@@ -8,7 +9,7 @@ Content-Type: application/json
 }
 
 ### Get a value using raw command
-POST {{BaseUrl}}/devtools/command
+POST {{baseUrl}}/devtools/command
 Content-Type: application/json
 
 {
@@ -16,7 +17,7 @@ Content-Type: application/json
 }
 
 ### Check if key exists
-POST {{BaseUrl}}/devtools/command
+POST {{baseUrl}}/devtools/command
 Content-Type: application/json
 
 {
@@ -24,7 +25,7 @@ Content-Type: application/json
 }
 
 ### Get TTL of a key
-POST {{BaseUrl}}/devtools/command
+POST {{baseUrl}}/devtools/command
 Content-Type: application/json
 
 {
@@ -32,7 +33,7 @@ Content-Type: application/json
 }
 
 ### Execute Lua script
-POST {{BaseUrl}}/devtools/lua
+POST {{baseUrl}}/devtools/lua
 Content-Type: application/json
 
 {
@@ -42,7 +43,7 @@ Content-Type: application/json
 }
 
 ### Execute Lua script for atomic operations
-POST {{BaseUrl}}/devtools/lua
+POST {{baseUrl}}/devtools/lua
 Content-Type: application/json
 
 {
@@ -52,10 +53,10 @@ Content-Type: application/json
 }
 
 ### Ping Redis server
-GET {{BaseUrl}}/devtools/ping
+GET {{baseUrl}}/devtools/ping
 
 ### Debug key information
-POST {{BaseUrl}}/devtools/debug/key
+POST {{baseUrl}}/devtools/debug/key
 Content-Type: application/json
 
 {
@@ -63,7 +64,7 @@ Content-Type: application/json
 }
 
 ### Start monitoring (simulation)
-POST {{BaseUrl}}/devtools/monitor
+POST {{baseUrl}}/devtools/monitor
 Content-Type: application/json
 
 {
@@ -71,7 +72,7 @@ Content-Type: application/json
 }
 
 ### Export keys matching pattern
-POST {{BaseUrl}}/devtools/export
+POST {{baseUrl}}/devtools/export
 Content-Type: application/json
 
 {
@@ -80,7 +81,7 @@ Content-Type: application/json
 }
 
 ### Import keys from export
-POST {{BaseUrl}}/devtools/import
+POST {{baseUrl}}/devtools/import
 Content-Type: application/json
 
 {
@@ -101,7 +102,8 @@ Content-Type: application/json
 }
 
 ### DANGER: Flush specific database (USE WITH CAUTION)
-# DELETE {{BaseUrl}}/devtools/flush/0
+# DELETE {{baseUrl}}/devtools/flush/0
 
 ### DANGER: Flush all databases (USE WITH EXTREME CAUTION)
-# DELETE {{BaseUrl}}/devtools/flush
+# DELETE {{baseUrl}}/devtools/flush
+

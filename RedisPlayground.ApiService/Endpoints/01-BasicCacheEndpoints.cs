@@ -28,8 +28,8 @@ public static partial class RedisEndpoints
         cacheGroup.MapPost("/{key}", SetCacheEntry)
             .WithName("SetCacheEntry")
             .WithSummary("Set cache entry")
-            .WithDescription("Stores a value in the cache with a 5-minute expiration")
-            .Accepts<string>("text/plain")
+            .WithDescription("Stores a value in the cache with configurable expiration (default 5 minutes)")
+            .Accepts<SetCacheRequest>("application/json")
             .Produces<CacheKeyResult>(StatusCodes.Status201Created);
 
         cacheGroup.MapDelete("/{key}", DeleteCacheEntry)
@@ -55,15 +55,13 @@ public static partial class RedisEndpoints
     /// <summary>
     /// Sets a cache entry with a value
     /// </summary>
-    private static async Task<IResult> SetCacheEntry(string key, HttpRequest req, IDistributedCache cache, CancellationToken ct = default)
+    private static async Task<IResult> SetCacheEntry(string key, SetCacheRequest request, IDistributedCache cache, CancellationToken ct = default)
     {
-        using var sr = new StreamReader(req.Body);
-        var body = await sr.ReadToEndAsync();
-        var bytes = Encoding.UTF8.GetBytes(body);
+        var bytes = Encoding.UTF8.GetBytes(request.Value);
 
         var options = new DistributedCacheEntryOptions
         {
-            AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(5)
+            AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(request.ExpirationMinutes ?? 5)
         };
 
         await cache.SetAsync(key, bytes, options, ct);

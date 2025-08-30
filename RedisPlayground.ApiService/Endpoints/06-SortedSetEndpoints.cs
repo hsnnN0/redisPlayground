@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using RedisPlayground.ApiService.Models;
 using StackExchange.Redis;
 
@@ -38,7 +39,7 @@ public static partial class RedisEndpoints
             .Produces(StatusCodes.Status404NotFound);
     }
 
-    private static async Task<IResult> AddToSortedSet(string key, SortedSetAddRequest request, IConnectionMultiplexer redis, CancellationToken ct = default)
+    private static async Task<IResult> AddToSortedSet(string key, [FromBody] SortedSetAddRequest request, [FromServices] IConnectionMultiplexer redis, CancellationToken ct = default)
     {
         try
         {
@@ -52,7 +53,7 @@ public static partial class RedisEndpoints
         }
     }
 
-    private static async Task<IResult> GetLeaderboard(string key, IConnectionMultiplexer redis, int count = 10, bool descending = true, CancellationToken ct = default)
+    private static async Task<IResult> GetLeaderboard(string key, [FromServices] IConnectionMultiplexer redis, int count = 10, bool descending = true, CancellationToken ct = default)
     {
         try
         {
@@ -70,7 +71,7 @@ public static partial class RedisEndpoints
         }
     }
 
-    private static async Task<IResult> GetMemberRank(string key, string member, IConnectionMultiplexer redis, CancellationToken ct = default)
+    private static async Task<IResult> GetMemberRank(string key, string member, [FromServices] IConnectionMultiplexer redis, CancellationToken ct = default)
     {
         try
         {

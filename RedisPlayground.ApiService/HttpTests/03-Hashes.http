@@ -1,6 +1,7 @@
+@baseUrl = https://localhost:7460
 ### Redis Hash Operations
 ### Set hash field
-POST {{BaseUrl}}/hashes/user:1/fields
+POST {{baseUrl}}/hashes/user:1/fields
 Content-Type: application/json
 
 {
@@ -9,7 +10,7 @@ Content-Type: application/json
 }
 
 ### Set another hash field
-POST {{BaseUrl}}/hashes/user:1/fields
+POST {{baseUrl}}/hashes/user:1/fields
 Content-Type: application/json
 
 {
@@ -18,7 +19,7 @@ Content-Type: application/json
 }
 
 ### Set age field
-POST {{BaseUrl}}/hashes/user:1/fields
+POST {{baseUrl}}/hashes/user:1/fields
 Content-Type: application/json
 
 {
@@ -27,7 +28,7 @@ Content-Type: application/json
 }
 
 ### Set city field
-POST {{BaseUrl}}/hashes/user:1/fields
+POST {{baseUrl}}/hashes/user:1/fields
 Content-Type: application/json
 
 {
@@ -36,16 +37,16 @@ Content-Type: application/json
 }
 
 ### Get specific hash field
-GET {{BaseUrl}}/hashes/user:1/fields/name
+GET {{baseUrl}}/hashes/user:1/fields/name
 
 ### Get another specific field
-GET {{BaseUrl}}/hashes/user:1/fields/email
+GET {{baseUrl}}/hashes/user:1/fields/email
 
 ### Get entire hash
-GET {{BaseUrl}}/hashes/user:1
+GET {{baseUrl}}/hashes/user:1
 
 ### Set product details hash
-POST {{BaseUrl}}/hashes/product:123/fields
+POST {{baseUrl}}/hashes/product:123/fields
 Content-Type: application/json
 
 {
@@ -54,7 +55,7 @@ Content-Type: application/json
 }
 
 ### Set product price
-POST {{BaseUrl}}/hashes/product:123/fields
+POST {{baseUrl}}/hashes/product:123/fields
 Content-Type: application/json
 
 {
@@ -63,7 +64,7 @@ Content-Type: application/json
 }
 
 ### Set product category
-POST {{BaseUrl}}/hashes/product:123/fields
+POST {{baseUrl}}/hashes/product:123/fields
 Content-Type: application/json
 
 {
@@ -72,10 +73,11 @@ Content-Type: application/json
 }
 
 ### Get product name
-GET {{BaseUrl}}/hashes/product:123/fields/name
+GET {{baseUrl}}/hashes/product:123/fields/name
 
 ### Get product price
-GET {{BaseUrl}}/hashes/product:123/fields/price
+GET {{baseUrl}}/hashes/product:123/fields/price
 
 ### Get entire product hash
-GET {{BaseUrl}}/hashes/product:123
+GET {{baseUrl}}/hashes/product:123
+
