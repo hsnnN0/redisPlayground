@@ -1,4 +1,5 @@
 @baseUrl = https://localhost:7460
+
 ### Redis Locks Operations
 ### Acquire a distributed lock
 POST {{baseUrl}}/locks/my_resource/acquire

@@ -1,4 +1,5 @@
 @baseUrl = https://localhost:7460
+
 ### Redis Geospatial Operations
 ### Add restaurant locations
 POST {{baseUrl}}/geo/restaurants/add

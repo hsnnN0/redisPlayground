@@ -1,4 +1,5 @@
 @baseUrl = https://localhost:7460
+
 ### Analytics & Monitoring Operations
 ### Get Redis server information
 GET {{baseUrl}}/analytics/info

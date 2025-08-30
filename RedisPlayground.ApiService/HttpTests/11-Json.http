@@ -1,4 +1,5 @@
 @baseUrl = https://localhost:7460
+
 ### Redis JSON Operations (Simulated)
 ### Set a user profile JSON document
 POST {{baseUrl}}/json/user:profile:123

@@ -1,4 +1,5 @@
 @baseUrl = https://localhost:7460
+
 ### Redis Hash Operations
 ### Set hash field
 POST {{baseUrl}}/hashes/user:1/fields

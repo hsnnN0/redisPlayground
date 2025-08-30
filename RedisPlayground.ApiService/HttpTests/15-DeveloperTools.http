@@ -1,4 +1,5 @@
 @baseUrl = https://localhost:7460
+
 ### Developer Tools Operations
 ### Execute raw Redis commands
 POST {{baseUrl}}/devtools/command

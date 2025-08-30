@@ -409,7 +409,6 @@ yarn.lock
 # Azure Functions
 bin
 obj
-appsettings.json
 local.settings.json
 *.azurefunctions
 

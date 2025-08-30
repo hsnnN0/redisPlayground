@@ -1,4 +1,5 @@
 @baseUrl = https://localhost:7460
+
 ### Redis Sorted Sets & Leaderboard Operations
 ### Add players to game leaderboard
 POST {{baseUrl}}/sorted-sets/game:leaderboard/add

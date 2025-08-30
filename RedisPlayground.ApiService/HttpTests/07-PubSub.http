@@ -1,4 +1,5 @@
 @baseUrl = https://localhost:7460
+
 ### Redis Pub/Sub Operations
 ### Publish a message to a channel
 POST {{baseUrl}}/pubsub/publish/test-channel

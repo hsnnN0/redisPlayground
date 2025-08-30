@@ -1,4 +1,5 @@
 @baseUrl = https://localhost:7460
+
 ### Redis Bitfield Operations (Simulated)
 ### Set a bitfield value
 POST {{baseUrl}}/bitfield/user:permissions/set

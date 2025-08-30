@@ -1,4 +1,5 @@
 @baseUrl = https://localhost:7460
+
 ### Redis List Operations
 ### Push values to the left of a list
 POST {{baseUrl}}/lists/mylist/push

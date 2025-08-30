@@ -1,4 +1,5 @@
 @baseUrl = https://localhost:7460
+
 ### Redis Stream Operations
 ### Add event to user activity stream
 POST {{baseUrl}}/streams/user:123:activity/add

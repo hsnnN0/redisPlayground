@@ -1,4 +1,5 @@
 @baseUrl = https://localhost:7460
+
 ### Redis Set Operations
 ### Add members to a set
 POST {{baseUrl}}/sets/myset/add
